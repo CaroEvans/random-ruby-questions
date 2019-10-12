@@ -79,7 +79,7 @@ def save!(array)
   raise ArgumentError.new('arg should be array') unless array.is_a?(Array)
 
   # do stuff ..
-rescue ArgumentError
+rescue __X__
   puts 'Failed to save!'
   puts $1
   puts $1.message
@@ -91,9 +91,9 @@ end
 - [ ] `Error => e`
 - [ ] *nothing*
 - [ ] `SystemError => e`
-- [ ] `ArgumentError => e`
-- [ ] `StandardError => e`
-- [ ] `ArgumentError`
+- [x] `ArgumentError => e`
+- [x] `StandardError => e`
+- [x] `ArgumentError`
 - [ ] ` => ArgumentError`
 - [ ] ` => argument_error`
 
