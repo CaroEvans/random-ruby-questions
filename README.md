@@ -2,21 +2,19 @@
 
 ```ruby
 class Document
-   attr_writer :content 
+   attr_accessor :content, :title
 
-  def initialise
+  def initialize(content, title)
     @content = content
     @title = title
   end
 
   def to_s
-    "#{title}: #{content}"
+    "#{@title}: #{@content}"
   end
 end
 
-doc = Document.new
-doc.title = "Ruby Exam"
-doc.content = "TODO some questions"
+doc = Document.new("Ruby Exam", "TODO some questions")
 
 puts doc.title
 puts doc.content
@@ -26,39 +24,39 @@ puts doc
 #### I made a mistake in the RubyExam, can you find it?
 
 ```ruby
-module RubyExam
+class RubyExam
   def initialize
     @score = 0
     @current_question = 1
   end
 
   def got_one_right
-    @score++
-    next
+    @score += 1
+    next_question
   end
 
   def got_one_wrong
-    @score--
-    next
+    @score +- 1
+    next_question
   end
 
-  def next
-    @current_question++
+  def next_question
+    @current_question += 1
   end
 
-  def redo
+  def perfect_score
     puts "I made no mistake!"
-    @score = 10
   end
   
   def complete
     if @score < 10
       puts 'Game Over'
     else
-      redo
+      perfect_score
     end
     puts "Final Score: #{@score}"
   end
+
 end
 
 exam = RubyExam.new
@@ -70,9 +68,9 @@ exam.complete
 
 #### What are 3 ways to create a new Hash?
 
-- *give me answer*
-- *give me answer*
-- *give me answer*
+- Hash.new
+- hash = {'key': 'value'}
+- Hash['key','value']
 
 #### Which of the following are valid for __X__?
 
@@ -81,7 +79,7 @@ def save!(array)
   raise ArgumentError.new('arg should be array') unless array.is_a?(Array)
 
   # do stuff ..
-rescue __X__
+rescue ArgumentError
   puts 'Failed to save!'
   puts $1
   puts $1.message
@@ -110,7 +108,7 @@ p d.to_s
 - [ ] `"1998-01-01"`
 - [ ] `"1998-12-31"`
 - [ ] `"1998-12-01"`
-- [ ] an exception
+- [x] an exception
 
 #### What is the correct output for:
 
@@ -122,7 +120,7 @@ p d.to_s
 - [ ] `"2018-12-31"`
 - [ ] `"2020-01-31"`
 - [ ] `"2019-02-31"`
-- [ ] `"2019-02-28"`
+- [x] `"2019-02-28"`
 - [ ] an exception
 
 
@@ -133,8 +131,8 @@ toybox = { "doll" => 'Sally' }
 ```
 
 - [ ] `toybox.doll`
-- [ ] `toybox['doll']`
-- [ ] `toybox["doll"]`
+- [x] `toybox['doll']`
+- [x] `toybox["doll"]`
 - [ ] `toybox[:doll]`
 - [ ] `toybox.try('doll')`
 
@@ -145,7 +143,7 @@ toybox = { "doll" => 'Sally' }
 - .tsx
 - .tsx.erb
 
-`/^\.(ts|tsx)?(\.erb)?$/`
+`/^\.ts(x)?(\.erb)?$/`
 
 Here is a good editor for regexp, maybe try and do it without using it first tho: https://rubular.com/
 
@@ -154,25 +152,30 @@ Here is a good editor for regexp, maybe try and do it without using it first tho
 ```ruby
 # /User/gollum/precious/ring.rb
 File.dirname(__FILE__)
+
+File.dirname("/User/gollum/precious/")
 ```
 
-- *give me answer*
 
 ```ruby
 # /User/tom/junk/ring.rb
 File.path(__dir__)
+
+File.path("/User/tom/junk/ring.rb")
 ```
 
-- *give me answer*
 
 #### Write the following method that would give me the correct return value:
 
 ```ruby
 bark { "Oki" }
 => "Oki yips!"
+
+def bark (dogs_name)
+  puts "#{dogs_name} yips!"
+end
 ```
 
-- *give me answer*
 
 #### What is the result of the following:
 
@@ -187,4 +190,6 @@ else
 end
 
 p teams.flat_map { |t| t }
+
+[greg, bob, jim, jerry]
 ```
