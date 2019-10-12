@@ -70,7 +70,7 @@ exam.complete
 
 - Hash.new
 - hash = {'key': 'value'}
-- Hash['key','value']
+- 
 
 #### Which of the following are valid for __X__?
 
@@ -106,9 +106,9 @@ p d.to_s
 
 - [ ] `"1999-01-02"`
 - [ ] `"1998-01-01"`
-- [ ] `"1998-12-31"`
+- [x] `"1998-12-31"`
 - [ ] `"1998-12-01"`
-- [x] an exception
+- [ ] an exception
 
 #### What is the correct output for:
 
